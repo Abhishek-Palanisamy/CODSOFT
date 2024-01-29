@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body{
+            width: 60%;
+            padding-bottom: 5.8%;
+            margin-top: 5%;
+            margin-left: 40%;
+            background: rgb(2,0,36);
+            background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);            }
+        h1{
+            color: aliceblue;
+            font-family:cursive;
+        }
+        input{
+            margin-left: 3px;
+            margin-bottom: 5%;
+            padding: 10%;
+            width:78%;
+            font-size: 24px;
+        }
+        .grid-container {
+            margin-left: 3px;
+            display: grid;
+            grid-template-columns: 64px 64px 64px 64px;
+            gap: 4px;
+            row-gap: 4px;
+        }
+        button{
+            border-radius: 50px;
+            width:98%;
+            margin-left: 1.4%;
+            padding:8px;
+            border: none;
+            font-size: 23px;
+            background-color: rgb(210, 205, 205);
+            margin: 2%;
+            font-weight: bold;
+
+        }
+        .red{
+            background-color: red;
+            color: white;
+        }
+        .grid-item {
+            font-weight: bolder;
+            margin-top: 1%;
+            background-color: rgb(210, 205, 205);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 9px;
+            font-size: 23px;
+            text-align: justify;
+            border-radius: 50px;
+        }
+        .grid-item1{
+            font-weight: bolder;
+            margin-top: 1%;
+            background-color: rgb(210, 205, 205);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 9px;
+            font-size: 23px;
+            text-align: justify;
+            border-radius: 50px;
+            background-color: rgb(250, 142, 1);
+        }
+        main{
+            box-shadow: 4px 10px 10px 10px white;
+            width: 30%;
+            padding: 2%;
+            border-radius: 12px;
+        }
+        button:hover{
+            cursor: pointer;
+        }
+        .equal{
+            background-color: rgb(250, 142, 1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <main>
+            <input value="" id="input" readonly>
+            <div class="grid-container">
+        <button onclick="del()">DEL</button>
+        <button onclick="cl()" class="red">AC</button>
+        <div class="grid-item" ><button onclick="calculate('/')" >/</button></div> 
+        <div class="grid-item"><button onclick="calculate('+')">+</button></div>  
+        <div class="grid-item"><button onclick="calculate('7')">7</button></div>
+        <div class="grid-item"><button onclick="calculate('8')">8</button></div>
+        <div class="grid-item"><button onclick="calculate('9')">9</button></div>  
+        <div class="grid-item"><button onclick="calculate('-')">-</button></div>  
+        <div class="grid-item"><button onclick="calculate('4')">4</button></div>
+        <div class="grid-item"><button onclick="calculate('5')">5</button></div>
+        <div class="grid-item"><button onclick="calculate('6')">6</button></div>  
+        <div class="grid-item"><button onclick="calculate('*')">*</button></div> 
+        <div class="grid-item"><button onclick="calculate('1')">1</button></div>
+        <div class="grid-item"><button onclick="calculate('2')">2</button></div>
+        <div class="grid-item"><button onclick="calculate('3')">3</button></div> 
+        <div class="grid-item"><button onclick="calculate('.')">.</button></div> 
+        <div class="grid-item"><button onclick="calculate('0')">0</button></div> 
+        <div class="grid-item"><button onclick="calculate('00')">00</button></div> 
+        <div class="grid-item1" style="width: 180%"><button class="equal" onclick="total()">Answer</button></div> 
+    </div>
+    
+</main>
+    <script>
+        function calculate(x) {
+            if (document.getElementById("input").value == 0) {
+                document.getElementById("input").value = "";
+                document.getElementById("input").value = x;
+            } else {
+                document.getElementById("input").value += x;
+            }
+        }
+        function total() {
+            var x = document.getElementById("input").value;
+            var y = eval(x);
+            document.getElementById("input").value = y;
+        }
+        function cl() {
+            document.getElementById("input").value = "0";
+        }
+        function del() {
+            let display = document.getElementById('input');
+            display.value = display.value.slice(0, -1);
+        }
+    </script>
+</body>
+</html>
